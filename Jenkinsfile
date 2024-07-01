@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     environment {
+         AWS_ACCESS_KEY_ID = credentials('AKIAXUP5XUOR7AG4YGPL')
+        AWS_SECRET_ACCESS_KEY = credentials('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')
         DOCKER_IMAGE = "525055009699.dkr.ecr.us-east-1.amazonaws.com/my-ecr-repo-siddhant-task"
     }
 
