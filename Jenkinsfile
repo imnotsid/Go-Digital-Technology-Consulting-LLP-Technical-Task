@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any  // Use any available agent
 
     environment {
         AWS_REGION = 'us-east-1'
@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Ensure the Git repository is checked out inside a node block
                 script {
                     checkout scm
                 }
@@ -48,10 +47,8 @@ pipeline {
     post {
         always {
             // Ensure archiveArtifacts is used inside a node context
-            node {
-                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-                junit '**/target/test-*.xml'
-            }
+            archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+            junit '**/target/test-*.xml'
         }
     }
 }
